@@ -5,10 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -20,9 +17,15 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int targetStore;
-    private String reviewer;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Store store;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Member member;
     private LocalDateTime createdTime;
     private String text;
-    private int reservationNum;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Reservation reservation;
 }

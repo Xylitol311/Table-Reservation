@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToMany;
 
 @Getter
 @Setter
